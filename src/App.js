@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './pages/Home';
+import ManageItem from './pages/admin/manage/ManageItem';
+import Nav from './components/Nav';
+import ItemPages from './pages/admin/item/ItemPages';
+import UpdateItem from './pages/admin/update/UpdateItem';
+import CreateItem from './pages/admin/create/CreateItem';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+
 
 function App() {
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <div className="App">
+          <Nav />
+          <Switch>
+            <Route path='/' exact component={Home}/>
+            <Route path='/manage-post' component={ManageItem}/>
+            <Route path='/update-post/:id' component={UpdateItem}/>
+            <Route path='/item-page/:id' component={ItemPages}/>
+            <Route path='/create-post' component={CreateItem} />
+          </Switch>
+        </div>
+      </Router>
   );
 }
 
